@@ -114,7 +114,7 @@ var gaugeProgressUnit = gaugeWidth/questionTime;
 var TIMER;
 var score = 0;
 
-// render a question
+// Render a question
 function renderQuestion(){
     let q = questions[runningQuestionIndex];
     question.innerHTML = "<p>"+ q.question +"</p>";
@@ -130,10 +130,10 @@ start.addEventListener("click", startQuiz);
 // Start quiz
 function startQuiz(){
     start.style.display = "none";
-    renderCounter();
+    renderQuestion();
     quiz.style.display = "block";
     renderProgress();
-    renderQuestion();
+    renderCounter();
     TIMER=setInterval(renderCounter,1000);
 }
 
@@ -167,10 +167,10 @@ function renderCounter(){
 
 // Check answer
 function checkAnswer(answer){
-    console.log(questions[runningQuestionIndex].coreect);
+    console.log(questions[runningQuestionIndex].correct);
     console.log(answer);
     
-    if(questions[runningQuestionIndex].coreect == answer) {
+    if(questions[runningQuestionIndex].correct == answer) {
         // Answer is correct
         score++;
         // Change progress color to green
