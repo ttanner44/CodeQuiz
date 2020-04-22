@@ -2,7 +2,7 @@
 var start = document.getElementById("start");
 var quiz = document.getElementById("quiz");
 var question = document.getElementById("question");
-var qImg = document.getElementById("qImg");
+// var qImg = document.getElementById("qImg");
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
@@ -15,7 +15,7 @@ var scoreDiv = document.getElementById("scoreContainer");
 var questions = [
     {
         question: "This is question #1?",
-        imgSrc: "assets/html.png",
+        // imgSrc: "assets/html.png",
         choiceA: "The 1st Choice",
         choiceB: "The 2nd Choice",
         choiceC: "The 3rd Choice",
@@ -24,7 +24,7 @@ var questions = [
     },
     {
         question: "This is question #2?",
-        imgSrc: "assets/css.png",
+        // imgSrc: "assets/css.png",
         choiceA: "The 1st Choice",
         choiceB: "The 2nd Choice",
         choiceC: "The 3rd Choice",
@@ -33,7 +33,7 @@ var questions = [
     },
     {
         question: "This is question #3?",
-        imgSrc: "assets/js.png",
+        // imgSrc: "assets/js.png",
         choiceA: "The 1st Choice",
         choiceB: "The 2nd Choice",
         choiceC: "The 3rd Choice",
@@ -42,7 +42,7 @@ var questions = [
     },
     {
         question: "This is question #4?",
-        imgSrc: "assets/html.png",
+        // imgSrc: "assets/html.png",
         choiceA: "The 1st Choice",
         choiceB: "The 2nd Choice",
         choiceC: "The 3rd Choice",
@@ -51,7 +51,7 @@ var questions = [
     },
     {
         question: "This is question #5?",
-        imgSrc: "assets/css.png",
+        // imgSrc: "assets/css.png",
         choiceA: "The 1st Choice",
         choiceB: "The 2nd Choice",
         choiceC: "The 3rd Choice",
@@ -60,7 +60,7 @@ var questions = [
     },
     {
         question: "This is question #6?",
-        imgSrc: "assets/js.png",
+        // imgSrc: "assets/js.png",
         choiceA: "The 1st Choice",
         choiceB: "The 2nd Choice",
         choiceC: "The 3rd Choice",
@@ -69,7 +69,7 @@ var questions = [
     },
     {
         question: "This is question #7?",
-        imgSrc: "assets/html.png",
+        // imgSrc: "assets/html.png",
         choiceA: "The 1st Choice",
         choiceB: "The 2nd Choice",
         choiceC: "The 3rd Choice",
@@ -78,7 +78,7 @@ var questions = [
     },
     {
         question: "This is question #8?",
-        imgSrc: "assets/css.png",
+        // imgSrc: "assets/css.png",
         choiceA: "The 1st Choice",
         choiceB: "The 2nd Choice",
         choiceC: "The 3rd Choice",
@@ -87,7 +87,7 @@ var questions = [
     },
     {
         question: "This is question #9?",
-        imgSrc: "assets/js.png",
+        // imgSrc: "assets/js.png",
         choiceA: "The 1st Choice",
         choiceB: "The 2nd Choice",
         choiceC: "The 3rd Choice",
@@ -96,7 +96,7 @@ var questions = [
     },
     {
         question: "This is question #10?",
-        imgSrc: "assets/html.png",
+        // imgSrc: "assets/html.png",
         choiceA: "The 1st Choice",
         choiceB: "The 2nd Choice",
         choiceC: "The 3rd Choice",
@@ -118,7 +118,7 @@ var score = 0;
 function renderQuestion(){
     let q = questions[runningQuestionIndex];
     question.innerHTML = "<p>"+ q.question +"</p>";
-    qImg.innerHTML = "<img src="+ q.imgSrc +">";
+    // qImg.innerHTML = "<img src="+ q.imgSrc +">";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
@@ -167,8 +167,6 @@ function renderCounter(){
 
 // Check answer
 function checkAnswer(answer){
-    console.log(questions[runningQuestionIndex].correct);
-    console.log(answer);
     
     if(questions[runningQuestionIndex].correct == answer) {
         // Answer is correct
