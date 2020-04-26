@@ -10,88 +10,58 @@ var choiceD = document.getElementById("D");
 var counter = document.getElementById("counter");
 var timeGauge = document.getElementById("timeGauge");
 var progress = document.getElementById("progress");
+var lastQuestGrade = document.getElementById("lastQuestGrade");
 var scoreDiv = document.getElementById("scoreContainer");
+var smilyFace = document.getElementById("smilyFace");
+var quizScore = document.getElementById("quizScore");
+
+var submitBtn = document.querySelector("#submitBtn");
+var inputInitials = document.querySelector("#inputInitials")
+var msgDiv = document.querySelector("#msg");
+var userInitialsSpan = document.querySelector("#userInitials");
+var userFinalScore = document.querySelector("#userFinalScore");
+
 
 var questions = [
     {
-        question: "This is question #1?This is question #1?This is question #1?",
-        choiceA: "The 1st Choice",
-        choiceB: "The 2nd Choice",
-        choiceC: "The 3rd Choice",
-        choiceD: "The 4th Choice",
+        question: "When a user views a page containing a JavaScript program, which machine actually executes the script?",
+        choiceA: "The User's machine running a Web browser",
+        choiceB: "The Web server",
+        choiceC: "A central machine deep within Netscape's corporate offices",
+        choiceD: "None of the above",
         correct: "A",
     },
     {
-        question: "This is question #2?",
-        choiceA: "The 1st Choice",
-        choiceB: "The 2nd Choice",
-        choiceC: "The 3rd Choice",
-        choiceD: "The 4th Choice",
+        question: "Which of these is not a logical operator?",
+        choiceA: "!",
+        choiceB: "&",
+        choiceC: "&&",
+        choiceD: "||",
         correct: "B",
     },
     {
-        question: "This is question #3?",
-        choiceA: "The 1st Choice",
-        choiceB: "The 2nd Choice",
-        choiceC: "The 3rd Choice",
-        choiceD: "The 4th Choice",
+        question: "Which of these operators compares two variables by value AND type?",
+        choiceA: "===",
+        choiceB: "None of these",
+        choiceC: "==",
+        choiceD: "=",
+        correct: "A",
+    },
+    {
+        question: " The `else` statement is ___",
+        choiceA: "Does not exist, in JavaScript `or` and `then` are used to specify code to execute for the “false” case of the `if` statement.",
+        choiceB: "Used inside of an `if` statement. To specify the code that should execute if the `if` condition is no longer true.",
+        choiceC: "used together with the `if` statement to specify the code that should execute when the `if` condition is false.",
+        choiceD: "None of the above",
         correct: "C",
     },
     {
-        question: "This is question #4?",
-        choiceA: "The 1st Choice",
-        choiceB: "The 2nd Choice",
-        choiceC: "The 3rd Choice",
-        choiceD: "The 4th Choice",
+        question: "Which is not a primitive data type in JavaScript?",
+        choiceA: "boolean",
+        choiceB: "number",
+        choiceC: "string",
+        choiceD: "character",
         correct: "D",
-    },
-    {
-        question: "This is question #5?",
-        choiceA: "The 1st Choice",
-        choiceB: "The 2nd Choice",
-        choiceC: "The 3rd Choice",
-        choiceD: "The 4th Choice",
-        correct: "A",
-    },
-    {
-        question: "This is question #6?",
-        choiceA: "The 1st Choice",
-        choiceB: "The 2nd Choice",
-        choiceC: "The 3rd Choice",
-        choiceD: "The 4th Choice",
-        correct: "B",
-    },
-    {
-        question: "This is question #7?",
-        choiceA: "The 1st Choice",
-        choiceB: "The 2nd Choice",
-        choiceC: "The 3rd Choice",
-        choiceD: "The 4th Choice",
-        correct: "C",
-    },
-    {
-        question: "This is question #8?",
-        choiceA: "The 1st Choice",
-        choiceB: "The 2nd Choice",
-        choiceC: "The 3rd Choice",
-        choiceD: "The 4th Choice",
-        correct: "D",
-    },
-    {
-        question: "This is question #9?",
-        choiceA: "The 1st Choice",
-        choiceB: "The 2nd Choice",
-        choiceC: "The 3rd Choice",
-        choiceD: "The 4th Choice",
-        correct: "A",
-    },
-    {
-        question: "This is question #10?",
-        choiceA: "The 1st Choice",
-        choiceB: "The 2nd Choice",
-        choiceC: "The 3rd Choice",
-        choiceD: "The 4th Choice",
-        correct: "B",
     },
 ];
 
@@ -166,37 +136,48 @@ function checkAnswer(answer){
         } else {
             finalScore = quizTime - count;
             if (finalScore < 0) {finalScore = 0};
-            console.log(finalScore);
             clearInterval(TIMER);
             renderScore();
         }
 }
 // Answer is correct - green background
 function answerIsCorrect(){
+    lastQuestGrade = "Correct!";
+    document.getElementById("lastQuestGrade").innerHTML = lastQuestGrade;
     document.getElementById(runningQuestionIndex).style.backgroundColor = "green";
 }
 
 // Answer is wrong - red background and reduce time by 10
 function answerIsWrong(){
+    lastQuestGrade = "Wrong!";
+    document.getElementById("lastQuestGrade").innerHTML = lastQuestGrade;
     document.getElementById(runningQuestionIndex).style.backgroundColor = "red";
     count = count + 10;
 }
 
 // Render score
 function renderScore(){
-    console.log(count);
+    quiz.style.display = "none";
     scoreDiv.style.display = "block";
-
-    // Calculate quiz score in percent correct
     let scorePercent = Math.round(100 * score / questions.length);
-    
-    // Choose the image based upon score
-    let img = ( finalScore >= 30 ) ? "assets/5.png" :
-              ( finalScore >= 22 ) ? "assets/4.png" :
-              ( finalScore >= 16 ) ? "assets/3.png" :
-              ( finalScore >= 8 ) ? "assets/2.png" : 
-              "assets/1.png"; 
-
-    scoreDiv.innerHTML = "<img src="+ img +">";
-    scoreDiv.innerHTML += "<p>Score = "+ finalScore +"</p>";
+    quizScore.innerHTML += "<p>Score = "+ finalScore +"</p>";
 }
+
+// Submit Score
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    scoreContainer.style.display = "none";
+
+    //highScoreContainer.style.disply = "block";
+
+    var initials = document.querySelector("#inputInitials").value;
+
+    localStorage.setItem("initials", initials);
+    localStorage.setItem("finalScore", finalScore);
+    console.log(initials);
+    console.log(finalScore);
+    // renderLastRegistered();
+});
+
+
