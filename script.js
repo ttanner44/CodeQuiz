@@ -1,4 +1,4 @@
-// define elements
+// define elements and variables
 var start = document.getElementById("start");
 var startBtn = document.getElementById("startBtn");
 var quiz = document.getElementById("quiz");
@@ -12,15 +12,19 @@ var timeGauge = document.getElementById("timeGauge");
 var progress = document.getElementById("progress");
 var lastQuestGrade = document.getElementById("lastQuestGrade");
 var scoreDiv = document.getElementById("scoreContainer");
-var smilyFace = document.getElementById("smilyFace");
 var quizScore = document.getElementById("quizScore");
-
 var submitBtn = document.querySelector("#submitBtn");
 var inputInitials = document.querySelector("#inputInitials")
 var msgDiv = document.querySelector("#msg");
 var userInitialsSpan = document.querySelector("#userInitials");
+var hsInputForm = document.querySelector("initialSubmit")
 var userFinalScore = document.querySelector("#userFinalScore");
-
+var highScores = {
+    initials:"",
+    score:"",
+};
+var goBackBtn = document.getElementById("goBackBtn");
+var clearHighScoresBtn = document.getElementById("clearHighScoresBtn");
 
 var questions = [
     {
@@ -75,6 +79,8 @@ var TIMER;
 var final = 0;
 var score = 0;
 
+init();
+
 // Render a question
 function renderQuestion(){
     let q = questions[runningQuestionIndex];
@@ -96,14 +102,12 @@ function startQuiz(){
     renderCounter();
     TIMER=setInterval(renderCounter,1000);
 }
-
 // Render progress
 function renderProgress(){
     for(let qIndex = 0; qIndex <= lastQuestionIndex; qIndex++) {
         progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>";
     }
 }
-
 // Render counter
 function renderCounter(){
     if(count <= quizTime){
@@ -118,7 +122,6 @@ function renderCounter(){
             renderScore();
     }
 }
-
 // Check answer
 function checkAnswer(answer){
     
@@ -146,7 +149,6 @@ function answerIsCorrect(){
     document.getElementById("lastQuestGrade").innerHTML = lastQuestGrade;
     document.getElementById(runningQuestionIndex).style.backgroundColor = "green";
 }
-
 // Answer is wrong - red background and reduce time by 10
 function answerIsWrong(){
     lastQuestGrade = "Wrong!";
@@ -154,7 +156,6 @@ function answerIsWrong(){
     document.getElementById(runningQuestionIndex).style.backgroundColor = "red";
     count = count + 10;
 }
-
 // Render score
 function renderScore(){
     quiz.style.display = "none";
@@ -163,21 +164,86 @@ function renderScore(){
     quizScore.innerHTML += "<p>Score = "+ finalScore +"</p>";
 }
 
+function storeScores() {
+    // Stringify and set "scores" key in localStorage to scores object
+    localStorage.setItem("user", JSON.stringify(highScores));
+}
+
 // Submit Score
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
-
     scoreContainer.style.display = "none";
-
-    //highScoreContainer.style.disply = "block";
-
-    var initials = document.querySelector("#inputInitials").value;
-
-    localStorage.setItem("initials", initials);
-    localStorage.setItem("finalScore", finalScore);
-    console.log(initials);
+    var objInitials = document.querySelector("#inputInitials").value.trim();
+    
+    console.log(highScores);
+    console.log(objInitials);
     console.log(finalScore);
-    // renderLastRegistered();
+
+    highScores.push({initials: objInitials, score: finalScore,});
+    console.log(highScores);
+    storeScores();    
+    renderHighScore();
 });
 
+goBackBtn.addEventListener("click", goBack);
+clearHighScoresBtn.addEventListener("click", clearHighScores);
 
+// Rendor high score list
+function renderHighScore(){
+    // Set style display flags
+    highScoreHeader.style.display = "none";
+    start.style.display = "none";
+    quiz.style.display = "none";
+    scoreContainer.style.display = "none";
+    highScoreContainer.style.display = "block";
+    //Clear High Score list element
+    highScoreList.innerHTML = "";
+    // Render a new li for each high score
+    for (var i=0; i < highScores.length; i++) {
+        var hs = highScores[i];
+        var li = document.createElement("li");
+        li.textContent = hs;
+        li.setAttribute("data-index", i);
+        highScoreList.appendChild(li)
+    }
+}
+// Get stored initials and scores from localStorage
+function init() {
+    // Parsing the JSON string to an object
+    var storedHighScore = JSON.parse(localStorage.getItem("user"));
+    console.log(storedHighScore);
+    // if high scores were retrieved from localStorage, update the scores object to it
+    if (storedHighScore != null) {
+    highScores = storedHighScore;
+   }
+  } 
+// Tranfer to quiz div
+function goBack(){
+    // Set style display flags
+    highScoreHeader.style.display = "block";
+    start.style.display = "block";
+    quiz.style.display = "none";
+    scoreContainer.style.display = "none";
+    highScoreContainer.style.display = "none";
+    lastQuestionIndex = questions.length - 1;
+    // Reset quiz variables
+    runningQuestionIndex = 0;
+    count = 0;
+    quizTime = 60;
+    gaugeWidth = 150;
+    gaugeProgressUnit = gaugeWidth/quizTime;
+    final = 0;
+    score = 0;
+    quizScore.innerHTML += "";
+    console.log(progress.innerHTML);
+    progress.innerHTML = "";
+    console.log(progress.innerHTML);
+}
+// Clear highscore list
+function clearHighScores(){
+    highScoreHeader.style.display = "none";
+    start.style.display = "none";
+    quiz.style.display = "none";
+    scoreContainer.style.display = "none";
+    highScoreContainer.style.display = "block";
+}

@@ -2,12 +2,11 @@ body{
     font-size: 20px;
     font-family: monospace;
 }
-
 #container{
     margin: 20px 40px;
     background-color: white;
 }
-#HighScoreHeader{
+#highScoreHeader{
     font-size: 1em;
     font-style: italic;
     Color: purple;
@@ -24,10 +23,10 @@ body{
     font-weight: normal;
     padding: 20px;
 }
-#startBtn{
+.quizBtn{
     font-size: small;
     font-weight: bold;
-    width: 150px;
+    width: auto;
     height: 40px;
     Color: white;
     background-color: purple;
@@ -45,18 +44,11 @@ body{
     height : 125px;
     top:0;
 }
-/* #question p{
-    margin : 0;
-    padding : 15px;
-    font-size: 1.25em;
-    font-weight: Bold;
-} */
 .choices{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .choice{
     text-align: left;
     border : 1px solid grey;
@@ -82,7 +74,7 @@ body{
     font-size: 1.5em;
 }
 #btimeGauge{
-    width : 150px;
+    width: auto;
     height : 10px;
     border-radius: 10px;
     background-color: lightgray;
@@ -129,13 +121,22 @@ body{
     font-weight: bold;
     padding: 0 20px;
 }
-#submitBtn{
-    font-size: small;
-    font-weight: bold;
-    width: 150px;
-    height: 40px;
-    Color: white;
-    background-color: purple;
-    border-radius: 10px;
-    cursor: pointer;
-}
+#highScorListeHeader{
+    font-size: 1em;
+    font-style: italic;
+    Color: purple;
+    font-weight: normal;
+    padding: 0 20px;
+}    
+#highScoreList{
+    font-size: 1em;
+    font-style: italic;
+    height: 30px;
+    Color: black;
+    background-color: lightgrey;
+    border-width: 1px;
+    border-radius: 5px;
+    font-weight: normal;
+    text-align: justify;
+    margin: 5px;
+}    
