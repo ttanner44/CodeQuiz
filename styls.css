@@ -1,3 +1,4 @@
+/* Overall container */
 body{
     font-size: 20px;
     font-family: monospace;
@@ -6,6 +7,7 @@ body{
     margin: 20px 40px;
     background-color: white;
 }
+/* Highscore page */
 #highScoreHeader{
     font-size: 1em;
     font-style: italic;
@@ -38,6 +40,7 @@ body{
     background-color: white;
     color :purple;
 }
+/* Quiz question and choices */
 #question{
     width:500px;
     font-weight: bold;
@@ -63,7 +66,7 @@ body{
     border : 2px solid grey;
     font-weight: bold;
 }
-
+/* Quiz timer */
 #timer{
     float: right;
     height : 100px;
@@ -87,6 +90,7 @@ body{
     margin-top : -10px;
     margin-left : 25px;
 }
+/* Progress bar and last question result*/
 #progress{
     margin-top: 5px;
     padding: 5px;
@@ -109,6 +113,7 @@ body{
     text-align: center;
     text-align: left;
 }
+/* Final score */
 #scoreContainer p{
     font-size: 1.5em;
     font-weight: bold;
@@ -121,6 +126,7 @@ body{
     font-weight: bold;
     padding: 0 20px;
 }
+/* High score listing */
 #highScorListeHeader{
     font-size: 1em;
     font-style: italic;

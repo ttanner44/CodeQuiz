@@ -79,6 +79,7 @@ var TIMER;
 var final = 0;
 var score = 0;
 
+// Intitate function to get stored initials and scores from localStorage
 init();
 
 // Render a question
@@ -91,6 +92,7 @@ function renderQuestion(){
     choiceD.innerHTML = "4. "+ q.choiceD;
 }
 
+// Event listener for start quiz button
 startBtn.addEventListener("click", startQuiz);
 
 // Start quiz
@@ -163,12 +165,11 @@ function renderScore(){
     let scorePercent = Math.round(100 * score / questions.length);
     quizScore.innerHTML += "<p>Score = "+ finalScore +"</p>";
 }
-
+// Store scores in local storage
 function storeScores() {
     // Stringify and set "scores" key in localStorage to scores object
     localStorage.setItem("user", JSON.stringify(highScores));
 }
-
 // Submit Score
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
@@ -185,7 +186,9 @@ submitBtn.addEventListener("click", function(event) {
     renderHighScore();
 });
 
+// Event listener for go back button
 goBackBtn.addEventListener("click", goBack);
+// Event listner for clear scores button
 clearHighScoresBtn.addEventListener("click", clearHighScores);
 
 // Rendor high score list
