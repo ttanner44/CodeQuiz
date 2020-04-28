@@ -19,10 +19,10 @@ var msgDiv = document.querySelector("#msg");
 var userInitialsSpan = document.querySelector("#userInitials");
 var hsInputForm = document.querySelector("initialSubmit")
 var userFinalScore = document.querySelector("#userFinalScore");
-var highScores = {
+var highScores = [{
     initials:"",
     score:"",
-};
+}];
 var goBackBtn = document.getElementById("goBackBtn");
 var clearHighScoresBtn = document.getElementById("clearHighScoresBtn");
 
@@ -181,8 +181,9 @@ submitBtn.addEventListener("click", function(event) {
     console.log(objInitials);
     console.log(finalScore);
 
-    // highScores.push({initials: objInitials, score: finalScore,});
-    // console.log(highScores);
+    highScores.push({initials: objInitials, score: finalScore});
+    console.log(highScores.push({initials: objInitials, score: finalScore}));
+    console.log(highScores);
     storeScores();    
     renderHighScore();
 });
@@ -218,12 +219,15 @@ function init() {
     console.log(storedHighScore);
     // if high scores were retrieved from localStorage, update the scores object to it
     if (storedHighScore != null) {
-    highScores = storedHighScore;
+    highScores = [storedHighScore];
    }
   } 
 // Tranfer to quiz div
 function goBack(){
     // Set style display flags
+    console.log(inputInitials.value);
+    inputInitials.value = "";
+    console.log(inputInitials.value);
     highScoreHeader.style.display = "block";
     start.style.display = "block";
     quiz.style.display = "none";
@@ -242,7 +246,6 @@ function goBack(){
     console.log(progress.innerHTML);
     progress.innerHTML = "";
     quizScore.innerHTML = "";
-    inputInitials.innerHTML = "";
     console.log(progress.innerHTML);
 }
 // Clear highscore list
