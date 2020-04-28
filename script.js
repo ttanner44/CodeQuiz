@@ -94,6 +94,8 @@ function renderQuestion(){
 
 // Event listener for start quiz button
 startBtn.addEventListener("click", startQuiz);
+// Event listener for go back button
+highScoreHeader.addEventListener("click", renderHighScore);
 
 // Start quiz
 function startQuiz(){
@@ -126,7 +128,6 @@ function renderCounter(){
 }
 // Check answer
 function checkAnswer(answer){
-    
     if(questions[runningQuestionIndex].correct == answer) {
         // Answer is correct
         score++;
@@ -180,8 +181,8 @@ submitBtn.addEventListener("click", function(event) {
     console.log(objInitials);
     console.log(finalScore);
 
-    highScores.push({initials: objInitials, score: finalScore,});
-    console.log(highScores);
+    // highScores.push({initials: objInitials, score: finalScore,});
+    // console.log(highScores);
     storeScores();    
     renderHighScore();
 });
@@ -240,6 +241,8 @@ function goBack(){
     quizScore.innerHTML += "";
     console.log(progress.innerHTML);
     progress.innerHTML = "";
+    quizScore.innerHTML = "";
+    inputInitials.innerHTML = "";
     console.log(progress.innerHTML);
 }
 // Clear highscore list
@@ -249,4 +252,7 @@ function clearHighScores(){
     quiz.style.display = "none";
     scoreContainer.style.display = "none";
     highScoreContainer.style.display = "block";
+    localStorage.clear();
+    init();
+    renderHighScore();
 }
