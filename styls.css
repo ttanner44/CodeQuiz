@@ -146,4 +146,29 @@ body{
     font-weight: normal;
     text-align: justify;
     margin: 5px;
-}    
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: lightgray;
+}
+ li {
+     height: 30px;
+     margin-top: 5px;
+     margin-bottom: 5px;
+     background-color: lightgray;
+     color: black;
+     font-size: large;
+     padding-Left: 10px;
+     padding-top: 5px;
+     line-height: 1.0;
+ }
+ li:before {
+     content:"\2008";
+     position: absolute;
+ }
+ li:after {
+     content: "";
+     display:block;
+     clear: both;
+ }

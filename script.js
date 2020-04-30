@@ -186,6 +186,7 @@ submitBtn.addEventListener("click", function(event) {
     //add new highscore to highscores array, clear the input
     let savedText = (objInitials +" - "+finalScore);
     console.log("Saved Score: savedText = "+ savedText);
+    console.log("Saved Score: highScore = "+ highScores);
     highScores.unshift(savedText);
 
     
@@ -210,13 +211,14 @@ function renderHighScore(){
     //Clear High Score list element
     highScoreList.innerHTML = "";
     // Render a new li for each high score
-
-    for (var i=0; i < highScores.length; i++) {
-        var hs = highScores[i];
-        var li = document.createElement("li");
-        li.textContent = hs;
-        li.setAttribute("data-index", i);
-        highScoreList.appendChild(li);
+    if (highScores !== null) {
+        for (var i=0; i < highScores.length; i++) {
+            var hs = highScores[i];
+            var li = document.createElement("li");
+            li.textContent = hs;
+            li.setAttribute("data-index", i);
+            highScoreList.appendChild(li);
+        }
     }
 }
 // Get stored initials and scores from localStorage
@@ -264,7 +266,7 @@ function clearHighScores(){
     console.log(localStorage.getItem("user"));
     localStorage.clear();
     console.log(localStorage.getItem("user"));
-    highScores="";
+    highScores = [];
     // init();
     renderHighScore();
 }
