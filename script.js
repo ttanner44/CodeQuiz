@@ -17,12 +17,10 @@ var submitBtn = document.querySelector("#submitBtn");
 var inputInitials = document.querySelector("#inputInitials")
 var msgDiv = document.querySelector("#msg");
 var userInitialsSpan = document.querySelector("#userInitials");
+var userFinalScoreSpan = 0;
 var hsInputForm = document.querySelector("initialSubmit")
 var userFinalScore = document.querySelector("#userFinalScore");
-var highScores = [{
-    initials:"",
-    score:"",
-}];
+var highScores = [];
 var goBackBtn = document.getElementById("goBackBtn");
 var clearHighScoresBtn = document.getElementById("clearHighScoresBtn");
 
@@ -163,7 +161,6 @@ function answerIsWrong(){
 function renderScore(){
     quiz.style.display = "none";
     scoreDiv.style.display = "block";
-    let scorePercent = Math.round(100 * score / questions.length);
     quizScore.innerHTML += "<p>Score = "+ finalScore +"</p>";
 }
 // Store scores in local storage
@@ -175,15 +172,24 @@ function storeScores() {
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
     scoreContainer.style.display = "none";
+    
     var objInitials = document.querySelector("#inputInitials").value.trim();
     
-    console.log(highScores);
-    console.log(objInitials);
-    console.log(finalScore);
+    if(objInitials === "") {
+        return;
+    }
 
-    highScores.push({initials: objInitials, score: finalScore});
-    console.log(highScores.push({initials: objInitials, score: finalScore}));
-    console.log(highScores);
+    console.log("Submit Score: highScores(a) = "+ highScores);
+    console.log("Submit Score: objInitials = "+ objInitials);
+    console.log("Submit Score: finalScore = "+ finalScore);
+
+    //add new highscore to highscores array, clear the input
+    let savedText = (objInitials +" - "+finalScore);
+    console.log("Saved Score: savedText = "+ savedText);
+    highScores.unshift(savedText);
+
+    
+    console.log("Submit Score: highScores(b) = "+ highScores);
     storeScores();    
     renderHighScore();
 });
@@ -204,24 +210,24 @@ function renderHighScore(){
     //Clear High Score list element
     highScoreList.innerHTML = "";
     // Render a new li for each high score
+
     for (var i=0; i < highScores.length; i++) {
         var hs = highScores[i];
         var li = document.createElement("li");
         li.textContent = hs;
         li.setAttribute("data-index", i);
-        highScoreList.appendChild(li)
+        highScoreList.appendChild(li);
     }
 }
 // Get stored initials and scores from localStorage
 function init() {
     // Parsing the JSON string to an object
     var storedHighScore = JSON.parse(localStorage.getItem("user"));
-    console.log(storedHighScore);
     // if high scores were retrieved from localStorage, update the scores object to it
     if (storedHighScore != null) {
-    highScores = [storedHighScore];
-   }
-  } 
+    highScores = storedHighScore;
+    }
+ } 
 // Tranfer to quiz div
 function goBack(){
     // Set style display flags
@@ -255,7 +261,10 @@ function clearHighScores(){
     quiz.style.display = "none";
     scoreContainer.style.display = "none";
     highScoreContainer.style.display = "block";
+    console.log(localStorage.getItem("user"));
     localStorage.clear();
-    init();
+    console.log(localStorage.getItem("user"));
+    highScores="";
+    // init();
     renderHighScore();
 }
