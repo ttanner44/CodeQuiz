@@ -138,7 +138,7 @@ body{
 #highScoreList{
     font-size: 1em;
     font-style: italic;
-    height: 30px;
+    height: auto;
     Color: black;
     background-color: lightgrey;
     border-width: 1px;
@@ -146,6 +146,7 @@ body{
     font-weight: normal;
     text-align: justify;
     margin: 5px;
+    margin-bottom: 10px;
 }
 ul {
     list-style-type: none;
