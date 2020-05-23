@@ -30,6 +30,7 @@ THEN I can save my initials and score
 ## Screen Shots
 
 ```
+
 ![Start Quiz](./Assets/CodeQuizStart.PNG)
 
 ![Test Your Skills](./Assets/CodeQuizQuestion.PNG)
