@@ -1,7 +1,7 @@
-# CodeQuiz - Homework Assignment
+# CodeQuiz - Coding Multiple Choice Test Application
 
-# 04 Web APIs: Code Quiz
-Complete a coding assessment that renders a combination of multiple-choice questions and interactive challenges. It is a timed code quiz with multiple-choice questions. This app runs in the browser and feature dynamically updated HTML and CSS powered by JavaScript code. It features a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
+Code Quiz
+Built a coding assessment that renders a combination of multiple-choice questions and interactive challenges. It is a timed code quiz with multiple-choice questions. This app runs in the browser and feature dynamically updated HTML and CSS powered by JavaScript code. It features a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
 
 ## User Story
 
@@ -27,7 +27,9 @@ WHEN the game is over
 THEN I can save my initials and score
 ```
 
+## Screen Shots
 
+```
 ![Start Quiz](./Assets/CodeQuizStart.PNG)
 
 ![Test Your Skills](./Assets/CodeQuizQuestion.PNG)
@@ -35,13 +37,3 @@ THEN I can save my initials and score
 ![Get Results](./Assets/CodeQuizScore.PNG)
 
 ![Save High Score](./Assets/CodeQuizHighScore.PNG)
-
-
-### Deliverables
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository with a unique name and README describing the project.
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
