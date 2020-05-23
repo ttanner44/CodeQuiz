@@ -27,6 +27,16 @@ WHEN the game is over
 THEN I can save my initials and score
 ```
 
+
+![Start Quiz](./Assets/Code Quiz Start.PNG)
+
+![Test Your Skills](./Assets/Quiz Question.PNG)
+
+![Get Results](./Assets/Code Quiz Score.PNG)
+
+![Save High Score](./Assets/Code Quiz High Score.PNG)
+
+
 ### Deliverables
 
 * The URL of the functional, deployed application.
