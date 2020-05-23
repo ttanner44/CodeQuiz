@@ -3,6 +3,8 @@
 Code Quiz
 Built a coding assessment that renders a combination of multiple-choice questions and interactive challenges. It is a timed code quiz with multiple-choice questions. This app runs in the browser and feature dynamically updated HTML and CSS powered by JavaScript code. It features a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
 
+https://ttanner44.github.io/CodeQuiz/
+
 ## User Story
 
 ```
