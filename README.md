@@ -28,13 +28,13 @@ THEN I can save my initials and score
 ```
 
 
-![Start Quiz](./Assets/Code Quiz Start.PNG)
+![Start Quiz](./Assets/CodeQuizStart.PNG)
 
-![Test Your Skills](./Assets/Quiz Question.PNG)
+![Test Your Skills](./Assets/CodeQuizQuestion.PNG)
 
-![Get Results](./Assets/Code Quiz Score.PNG)
+![Get Results](./Assets/CodeQuizScore.PNG)
 
-![Save High Score](./Assets/Code Quiz High Score.PNG)
+![Save High Score](./Assets/CodeQuizHighScore.PNG)
 
 
 ### Deliverables
